@@ -1,0 +1,40 @@
+tr{
+    height: 50px;
+}
+
+.fade{
+    height: 670px;
+}
+.e-schedule{
+    height: 670px!important;
+}
+.e-table-container{
+    height: 670px;
+}
+.e-date-header-wrap .e-schedule-table tbody{
+    border: none;
+}
+
+.e-control, .e-schedule, .e-lib, .e-keyboard{
+    height: 100%!important;
+}
+.margin-left{
+    margin-left: 5px;
+}
+.e-toolbar-right{
+    display: none!important;
+}
+.e-toolbar-left{
+    margin-left: 40%;
+}
+
+.margins, .nav, .nav-tabs{
+    margin-left: 5px;
+}
+
+.tab-content{
+    height: 760px!important;
+}
+.scheduler-size .tab-content > .active {
+    height: 760px !important;
+}

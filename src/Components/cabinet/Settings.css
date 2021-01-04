@@ -1,0 +1,31 @@
+.settings-container {
+    padding: 20px 14px;
+    width: 600px;
+}
+
+.tab-content > .active {
+    display: block;
+    height: 808px !important;
+}
+
+.nav {
+    background: white;
+
+}
+
+.nav-tabs .nav-link {
+    background: white;
+    color: black;
+    border: none;
+
+}
+
+.nav-tabs .active {
+    font-weight: 500;
+    color: blue !important;
+    border-bottom: 2px solid blue !important;
+}
+
+a {
+    color: black;
+}

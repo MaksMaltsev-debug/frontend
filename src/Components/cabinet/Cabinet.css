@@ -1,0 +1,206 @@
+body {
+    background: lightgray;
+}
+
+.navbar {
+    width: 100%;
+    padding: 0 3%;
+
+}
+
+.navbar-expand {
+    width: 100%;
+}
+
+.navbar .form-inline {
+    width: 55%;
+    height: 100%;
+    padding-left: 10%;
+}
+
+.navbar .form-inline .form-control {
+    width: 100%;
+    border-radius: 0;
+    height: 60%;
+    border: solid 1px lightgray;
+}
+
+.navbar .dropdown {
+    height: 100%;
+    background: white;
+    margin-right: 0;
+    right: 0;
+    border: none;
+    border-left: solid 1px lightgray;
+    border-right: solid 1px lightgray;
+    width: 150px;
+}
+
+.navbar .notifications {
+    border-right: none;
+    margin-left: auto;
+    width: 100px;
+    position: relative;
+}
+
+.navbar .dropdown .container-notifications {
+    margin-left: -199px;
+    position: relative;
+
+}
+
+.btn-success:not(:disabled):not(.disabled).active:focus, .btn-success:not(:disabled):not(.disabled):active:focus, .show > .btn-success.dropdown-toggle:focus {
+    box-shadow: none;
+    background: white;
+}
+
+.navbar .dropdown .container-user {
+    margin-left: -150px;
+    margin-top: 0;
+    position: relative;
+    border-radius: 0;
+}
+
+.navbar .dropdown .dropdown-toggle, navbar .dropdown .btn, navbar .dropdown .btn-success {
+    height: 100%;
+    background: white;
+    border: none;
+    width: 100%;
+    color: black;
+    border-radius: 0;
+}
+
+.navbar .dropdown .dropdown-toggle::after {
+    content: none;
+}
+
+.navbar .dropdown .dropdown-menu .submenu {
+    padding: .25rem 1.5rem;
+    background: aliceblue;
+    margin-top: 0;
+    height: 60px;
+    display: table-cell;
+    vertical-align: middle;
+    width: 380px;
+    border-button: solid 1px lightgray;
+    font-size: 18px;
+}
+
+.navbar .dropdown .dropdown-menu .submenu-item {
+    padding: .25rem 1.5rem;
+    background: white;
+    margin-top: 0;
+    height: 60px;
+    display: table-cell;
+    vertical-align: middle;
+    width: 380px;
+    position: relative;
+    border-bottom: solid 1px lightgray;
+    font-size: 17px;
+}
+
+.navbar .dropdown .dropdown-menu .submenu-item .submenu-icon {
+    color: gray;
+    padding-right: 10px;
+    font-size: 20px;
+}
+
+.navbar .dropdown button:focus {
+    background: white;
+    box-shadow: none;
+}
+
+
+.navbar .dropdown .dropdown-menu, .navbar .dropdown .show {
+    width: 300px;
+    float: left;
+    color: black;
+    border: solid 1px lightgray;
+    padding: 0;
+
+}
+
+.navbar .dropdown .dropdown-menu .dropdown-item {
+    border-button: solid 1px lightgray;
+    height: 60px;
+    padding: 0;
+}
+
+@font-face {
+    font-family: 'icomoon';
+    src: url('fonts/icomoon.eot?uiyq50');
+    src: url('fonts/icomoon.eot?uiyq50#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?uiyq50') format('truetype'),
+    url('fonts/icomoon.woff?uiyq50') format('woff'),
+    url('fonts/icomoon.svg?uiyq50#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    /*speak: never;*/
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-chevron-left:before {
+    content: "\e905";
+}
+
+.icon-person:before {
+    content: "\e904";
+}
+
+.icon-clock:before {
+    content: "\e903";
+}
+
+.icon-bell:before {
+    content: "\e900";
+    font-size: 25px;
+    color: gray;
+}
+
+.icon-eye:before {
+    content: "\e902";
+}
+
+.icon-chevron-down:before {
+    content: "\e901";
+    font-size: 25px;
+    color: gray;
+}
+
+.icon-chevron-right:before {
+    content: "\e90a";
+}
+
+.icon-cog:before {
+    content: "\e994";
+}
+
+.notification-gear {
+    color: gray;
+    margin-top: 4px;
+    float: right;
+}
+
+.icon-exit:before {
+    content: "\ea14";
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}

@@ -1,0 +1,94 @@
+.navbar {
+    width: 100%;
+    height: 80px;
+    background: white;
+}
+
+.navbar .container {
+    width: 90%;
+    display: flex;
+}
+
+.navbar .container .links {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.navbar .container .links a {
+    color: white!important;
+    margin: 10px;
+    font-size: 28px;
+    text-decoration: none;
+}
+
+.navbar .container img {
+    border-radius: 5px/5px;
+}
+
+.wrapper {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+.box {
+    font-family: Tahoma;
+    color: white;
+    background: linear-gradient(45deg, #30cfd0, #330867);
+    margin: auto auto;
+    height: auto;
+    width: 400px;
+    text-align: center;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.82);
+    border-radius: 10px/10px;
+    top: 20%;
+    position: relative;
+}
+
+.box h1 {
+    text-transform: uppercase;
+    border-bottom: 3px solid white;
+    color: white;
+}
+
+.box .form-line {
+    margin: 10px;
+    padding: 5px;
+}
+
+.box .form-line label {
+    padding-left: 10px;
+    text-transform: uppercase;
+}
+
+.box .form-line label {
+    padding-left: 10px;
+    text-transform: uppercase;
+}
+
+.box .form-line input {
+    margin-top: 5px;
+    height: 30px;
+    width: 350px;
+    border-radius: 10px/10px;
+    border: none;
+    font-size: 18px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.82);
+    text-align: center;
+    color: black;
+}
+
+.box .form-line button {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    height: 30px;
+    border-radius: 10px/10px;
+    border: none;
+    font-size: 18px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.82);
+    background: linear-gradient(45deg, #30cfd0, #330867);
+}
+
+input:active {
+    border: none;
+}

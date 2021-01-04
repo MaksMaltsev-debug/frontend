@@ -1,0 +1,173 @@
+body{
+    background: lightgray!important;
+}
+.settings-container {
+    background: white;
+}
+
+.settings-container a {
+    color: gray !important;
+}
+
+.settings-container .photo-settings {
+    width: 100%;
+    border: 1px solid lightgray;
+    height: 130px;
+    display: flex;
+    margin-top: 30px;
+    padding: 10px 30px;
+    align-items: center;
+
+}
+
+.settings-container .photo-settings img {
+    height: 90px;
+    width: 90px;
+}
+
+.settings-container .photo-settings form {
+
+}
+
+.settings-container .photo-settings .buttons-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    margin-left: 20px;
+}
+
+.settings-container .photo-settings .buttons-container .buttons {
+    display: flex;
+}
+
+.settings-container .photo-settings .buttons-container .buttons label {
+    background: lightgray;
+    color: gray;
+    width: 173px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.settings-container .photo-settings .buttons-container .buttons button {
+    box-shadow: none;
+    width: 150px;
+    height: 40px;
+    background: white;
+    color: gray;
+    border: 1px solid gray;
+}
+
+.settings-container .photo-settings .buttons-container .buttons input {
+    width: 27px;
+    overflow: hidden;
+}
+
+.settings-container .name-settings {
+    margin-top: 30px;
+    height: 300px;
+}
+
+.settings-container .name-settings form {
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+}
+.settings-container .name-settings button{
+    margin-top: 100px;
+    width: 120px;
+    height: 45px;
+    color: white;
+    border: none;
+    text-align: center;
+    font-size: 17px;
+}
+
+.settings-container .name-settings .back-color{
+    background: darkblue;
+}
+
+.settings-container .name-settings form .col-sm-12 button{
+    margin-top: 30px;
+    width: 120px;
+    height: 45px;
+    background: darkblue;
+    color: white;
+    border: none;
+    text-align: center;
+    font-size: 17px;
+}
+
+.settings-container .name-settings form .col-sm-12 {
+    display: flex;
+    padding: 0;
+}
+
+.settings-container .name-settings form .col-sm-12 label {
+    text-transform: uppercase;
+    color: gray;
+    font-size: 12px;
+}
+
+.settings-container .name-settings form .column-flex-direction {
+    display: flex;
+    flex-direction: column;
+}
+
+.settings-container .name-settings form .col-sm-12 textarea {
+    width: 100%;
+    height: 170px;
+    border: 1px solid lightgray;
+    resize: none;
+    padding: 10px;
+}
+
+.settings-container .name-settings form .col-sm-12 .col-sm-6 {
+    padding: 0;
+    color: black;
+}
+
+.settings-container .name-settings form .col-sm-12 .col-sm-6 input {
+    height: 40px;
+    width: 275px;
+    border-radius: 0;
+    border: 1px solid lightgray;
+    color: black;
+    overflow: hidden;
+    padding-left: 10px;
+    font-size: 17px;
+}
+.settings-container .name-settings form .col-sm-12 .column-padding {
+    padding-left: 10px;
+}
+
+.settings-container .name-settings form .col-sm-12 .col-sm-6 label {
+    text-transform: uppercase;
+    color: gray;
+    font-size: 12px;
+}
+.margin-top{
+    margin-top: 30px;
+}
+
+.margin-top span{
+    margin-left: 20px;
+}
+.ant-switch{
+    margin-top: 0!important;
+    height: 22px!important;
+    width: 20px!important;
+}
+.ant-switch-checked{
+    background-color: darkblue!important;
+}
+.delete-button{
+    width: 140px!important;
+    margin-top: 20px!important;
+}
+.settings-container .name-settings form label{
+    display: flex;
+
+}
