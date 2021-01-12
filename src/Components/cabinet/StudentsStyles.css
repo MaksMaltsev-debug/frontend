@@ -3,34 +3,37 @@
     height: auto;
     width: 100%;
     flex-wrap: wrap;
-    /*justify-content: center;*/
 }
 
 
 .class-container .card {
-    width: 287px;
+    width: 19.6%;
     height: 247px;
     text-align: center;
     background: white;
     margin-top: 0 !important;
     margin-bottom: 10px;
-    margin-left: 10px;
+    margin-left: 5px;
     border-radius: 0;
     border: none;
     float: left;
 }
+.class-container .card p {
+    height: 30px;
+    overflow: hidden;
+}
 
 .class-container .class-card{
-    width: 388px;
-    height: 340px;
+    width: 32.9%;
+    height: 352px;
     text-align: left;
     background: white;
     margin-top: 0 !important;
     margin-bottom: 10px;
-    margin-left: 10px;
     border-radius: 0;
     border: none;
     float: left;
+    margin-left: 5px;
 }
 .class-container .class-card .card-header{
     display: flex;
@@ -105,4 +108,109 @@
     background: lightgray;
     color: gray;
     border-color: lightgray;
+}
+@media (max-width: 1600px) {
+    .class-container .card {
+        width: 19.5%;
+
+    }
+}
+@media (max-width: 1470px) {
+    .class-container .class-card{
+        width: 32.8%;
+
+    }
+    .class-container .card {
+        width: 19.5%;
+
+    }
+    .class-container .class-card .card-header a {
+        font-size: 13px;
+    }
+}
+@media (max-width: 1219px) {
+    .class-container .class-card .card-header a {
+        font-size: 12px;
+    }
+}
+@media (max-width: 1290px){
+    .class-container .card {
+        width: 19.3%;
+
+    }
+}
+@media (max-width: 1200px) {
+    .class-container .class-card{
+        width: 32.7%;
+    }
+    .class-container .class-card .card-img-top {
+        height: 60px;
+        width: 60px;
+        margin: 15px 10px;
+    }
+
+    .class-container .class-card .card-title {
+        margin-top: 18px;
+    }
+    .class-container .card .h5 {
+        font-size: 15px!important;
+    }
+    .class-container .card  .btn-primary{
+        font-size: 15px;
+    }
+    .class-container .class-card .card-header {
+        display: flex;
+        height: 100px;
+        padding: 10px 5px;
+    }
+    .class-container .class-card .card-header a {
+        font-size: 12px;
+    }
+}
+@media (max-width: 994px) {
+    .class-container .card .h5 {
+        font-size: 12px!important;
+    }
+    .class-container .card  .btn-primary{
+        font-size: 12px;
+    }
+    .class-container .class-card{
+        width: 32.4%;
+    }
+    .class-container .card p{
+        font-size: 12px;
+        height: 40px;
+    }
+    .class-container .class-card .card-img-top {
+        height: 40px;
+        width: 40px;
+        margin: 10px 10px;
+    }
+
+    .class-container .class-card .card-title {
+        margin-top: 10px;
+        font-size: 15px;
+    }
+    .class-container .class-card .card-header {
+        display: flex;
+        height: 90px;
+        padding: 10px 5px;
+    }
+    .class-container .class-card .card-header a {
+        font-size: 12px;
+    }
+    .class-container .class-card .card-text {
+        justify-content: center;
+    }
+    .class-container .card .card-img-top {
+        width: 40px;
+        height: 40px;
+        margin-top: 15px!important;
+    }
+    .class-container .card .card-title {
+        font-size: 15px;
+    }
+    .class-container .card .card-text {
+        font-size: 13px;
+    }
 }

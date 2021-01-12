@@ -3,9 +3,6 @@ import * as axios from "axios";
 import "./StudentsStyles.css";
 import Pagination from "./Pagination";
 import ClassEntity from "./ClassEntity";
-import DropdownButton, {Dropdown, Navbar} from "react-bootstrap";
-import defaultPhoto from "./image/web-user.jpeg";
-
 
 
 export class Classes extends Component {
@@ -34,7 +31,6 @@ export class Classes extends Component {
             const response = await axios(options);
             this.setState({classes: response.data});
             this.setState({loading: false});
-            console.log(JSON.stringify(response))
         };
         getAllClasses();
     }
@@ -46,11 +42,11 @@ export class Classes extends Component {
         const indexOfFirstPost = indexOfLastPost - postsPerPage;
         const currentPosts = classes.slice(indexOfFirstPost, indexOfLastPost);
 
-        const paginate = pageNum => this.setState({ currentPage: pageNum });
+        const paginate = pageNum => this.setState({currentPage: pageNum});
 
-        const nextPage = () => this.setState({ currentPage: currentPage + 1 });
+        const nextPage = () => this.setState({currentPage: currentPage + 1});
 
-        const prevPage = () => this.setState({ currentPage: currentPage - 1 });
+        const prevPage = () => this.setState({currentPage: currentPage - 1});
 
 
         return (
@@ -62,35 +58,37 @@ export class Classes extends Component {
                 {/*    <Dropdown.Item href="#/action-2" onClick={(e) => this.setState({ tabName: e.target.value })}>Another action</Dropdown.Item>*/}
                 {/*</DropdownButton>*/}
 
-            <div className={"class-container"}>
-                <ClassEntity posts={currentPosts} loading={loading}/>
+                <div className={"class-container"}>
+                    <ClassEntity posts={currentPosts} loading={loading}/>
 
-                {/*<div className={"container-user"}>*/}
-                {/*    <Dropdown>*/}
-                {/*        <Dropdown.Toggle variant="success" id="dropdown-basic">*/}
-                {/*            {this.state.tabName}*/}
-                {/*        </Dropdown.Toggle>*/}
-                {/*        <div className={"container-user"}>*/}
-                {/*            <Dropdown.Menu>*/}
-                {/*                <Dropdown.Item href="#/action-1" onClick={(e) => this.setState((e) => {*/}
-                {/*                    return {tabName: "ALL CLASSES"};*/}
-                {/*                })}>ALL CLASSES*/}
-                {/*                </Dropdown.Item>*/}
-                {/*                <Dropdown.Item href="#/action-1" onClick={(e) => this.setState(() => {*/}
-                {/*                    return {tabName: "MY CLASSES"};*/}
-                {/*                })}>*/}
-                {/*                    MY CLASSES*/}
-                {/*                </Dropdown.Item>*/}
-                {/*            </Dropdown.Menu>*/}
-                {/*        </div>*/}
-                {/*    </Dropdown>*/}
-                {/*</div>*/}
-                <Pagination postsPerPage={postsPerPage} totalPosts={classes.length} paginate={paginate} nextPage={nextPage} prevPage={prevPage} />
-            </div>
-                </>
+                    {/*<div className={"container-user"}>*/}
+                    {/*    <Dropdown>*/}
+                    {/*        <Dropdown.Toggle variant="success" id="dropdown-basic">*/}
+                    {/*            {this.state.tabName}*/}
+                    {/*        </Dropdown.Toggle>*/}
+                    {/*        <div className={"container-user"}>*/}
+                    {/*            <Dropdown.Menu>*/}
+                    {/*                <Dropdown.Item href="#/action-1" onClick={(e) => this.setState((e) => {*/}
+                    {/*                    return {tabName: "ALL CLASSES"};*/}
+                    {/*                })}>ALL CLASSES*/}
+                    {/*                </Dropdown.Item>*/}
+                    {/*                <Dropdown.Item href="#/action-1" onClick={(e) => this.setState(() => {*/}
+                    {/*                    return {tabName: "MY CLASSES"};*/}
+                    {/*                })}>*/}
+                    {/*                    MY CLASSES*/}
+                    {/*                </Dropdown.Item>*/}
+                    {/*            </Dropdown.Menu>*/}
+                    {/*        </div>*/}
+                    {/*    </Dropdown>*/}
+                    {/*</div>*/}
+                    <Pagination postsPerPage={postsPerPage} totalPosts={classes.length} paginate={paginate}
+                                nextPage={nextPage} prevPage={prevPage}/>
+                </div>
+            </>
 
         )
     }
 
 }
+
 export default Classes;

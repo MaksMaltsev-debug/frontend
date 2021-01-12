@@ -31,8 +31,7 @@ export default function Notifications() {
             },
             url: 'http://localhost:8091/class-management/notifications'
         };
-        const response = await axios(options);
-        console.log(response);
+        await axios(options);
     }
     const getNotifications = async () => {
         const token = localStorage.getItem("token");
@@ -50,8 +49,6 @@ export default function Notifications() {
         setNotificationClassStart(response.data.notificationClassStart);
         setActivityInClasses(response.data.activityInClasses);
         setInformationAboutUpdates(response.data.informationAboutUpdates);
-
-        console.log(response);
     }
 
     const handleChangeClassStart = () => {
@@ -65,30 +62,32 @@ export default function Notifications() {
         informationAboutUpdates ? setInformationAboutUpdates(false) : setInformationAboutUpdates(true);
     }
     return (
-        <div className={"settings-container"}>
-            <div className={"name-settings"}>
-                <h2>Notifications</h2>
-                <a>We highly recommend you create a strong one.</a>
-                <form>
-                    <label className={"margin-top"}>
-                        <Switch onChange={(e) => handleChangeClassStart(e)} checked={notificationClassStart}/>
-                        <span>Switch with default style</span>
-                    </label>
-                    <label className={"margin-top"}>
-                        <Switch onChange={(e) => handleChangeActivityInClasses(e)} checked={activityInClasses}/>
-                        <span>Switch with default style</span>
-                    </label>
-                    <label className={"margin-top"}>
-                        <Switch onChange={(e) => handleChangeInformationAboutUpdates(e)}
-                                checked={informationAboutUpdates}/>
-                        <span>Switch with default style</span>
-                    </label>
-                    <span>
+        <div className={"content-container"}>
+            <div className={"settings-container"}>
+                <div className={"name-settings"}>
+                    <h2>Notifications</h2>
+                    <a>We highly recommend you create a strong one.</a>
+                    <form>
+                        <label className={"margin-top"}>
+                            <Switch onChange={(e) => handleChangeClassStart(e)} checked={notificationClassStart}/>
+                            <span>Switch with default style</span>
+                        </label>
+                        <label className={"margin-top"}>
+                            <Switch onChange={(e) => handleChangeActivityInClasses(e)} checked={activityInClasses}/>
+                            <span>Switch with default style</span>
+                        </label>
+                        <label className={"margin-top"}>
+                            <Switch onChange={(e) => handleChangeInformationAboutUpdates(e)}
+                                    checked={informationAboutUpdates}/>
+                            <span>Switch with default style</span>
+                        </label>
+                        <span>
           </span>
-                </form>
-                <button className={"back-color"} onClick={(e) => handleChangeNotifications(e)}
-                        variant="primary">Save Changes
-                </button>
+                    </form>
+                    <button className={"back-color"} onClick={(e) => handleChangeNotifications(e)}
+                            variant="primary">Save Changes
+                    </button>
+                </div>
             </div>
         </div>)
 }

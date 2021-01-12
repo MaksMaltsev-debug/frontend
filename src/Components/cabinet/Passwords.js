@@ -59,39 +59,41 @@ export default function Password() {
     }
 
     return (
-        <div className={"settings-container"}>
-            <div className={"name-settings"}>
-                <h2>Passwords</h2>
-                <a>We highly recommend you create a strong one.</a>
-                <form className={"margin-top"}>
-                    <Col sm={12}>
-                        <Col sm={6}>
-                            <label>Current password</label>
-                            <input type={isPasswordShow ? "text" : "password"} name='password'
-                                   onChange={e => passwordHandlerOld(e)}
-                            />
-                        </Col>
-                        <Col sm={6} className={"margin-top"}>
+        <div className={"content-container"}>
+            <div className={"settings-container"}>
+                <div className={"name-settings"}>
+                    <h2>Passwords</h2>
+                    <a>We highly recommend you create a strong one.</a>
+                    <form className={"margin-top"}>
+                        <Col sm={12}>
+                            <Col sm={6}>
+                                <label>Current password</label>
+                                <input type={isPasswordShow ? "text" : "password"} name='password'
+                                       onChange={e => passwordHandlerOld(e)}
+                                />
+                            </Col>
+                            <Col sm={6} className={"margin-top"}>
                             <span className="icon-eye notification-gear"
                                   onClick={(e) => setIsPasswordShow(!isPasswordShow)}/>
+                            </Col>
                         </Col>
-                    </Col>
-                    <Col sm={12}>
-                        <Col sm={6}>
-                            <label>New password</label>
-                            <input type={isPasswordShow ? "text" : "password"} name='firstPassword'
-                                   onChange={e => passwordHandler(e)}/>
+                        <Col sm={12}>
+                            <Col sm={6}>
+                                <label>New password</label>
+                                <input type={isPasswordShow ? "text" : "password"} name='firstPassword'
+                                       onChange={e => passwordHandler(e)}/>
+                            </Col>
+                            <Col sm={6} className={"column-padding"}>
+                                <label>Repeat new password</label>
+                                <input type={isPasswordShow ? "text" : "password"} name='secondPassword'
+                                       onChange={e => passwordHandlerSecond(e)}/>
+                            </Col>
                         </Col>
-                        <Col sm={6} className={"column-padding"}>
-                            <label>Repeat new password</label>
-                            <input type={isPasswordShow ? "text" : "password"} name='secondPassword'
-                                   onChange={e => passwordHandlerSecond(e)}/>
-                        </Col>
-                    </Col>
-                </form>
-                <button className={"back-color"} disabled={!formValid} onClick={(e) => handleChangePassword(e)}
-                        variant="primary">Save Changes
-                </button>
+                    </form>
+                    <button className={"back-color"} disabled={!formValid} onClick={(e) => handleChangePassword(e)}
+                            variant="primary">Save Changes
+                    </button>
+                </div>
             </div>
         </div>)
 }

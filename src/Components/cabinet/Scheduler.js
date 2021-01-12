@@ -20,6 +20,7 @@ class Scheduler extends React.Component {
     state = {
         myData: []
     }
+    scheduleComponent;
     getClass = async () => {
         const token = localStorage.getItem("token");
         const options = {
@@ -34,13 +35,8 @@ class Scheduler extends React.Component {
         };
         const response = await axios(options);
         const myData = response.data.map(myClass => {
-            // let start1 = myClass.startTime.split("T")[0]+" "+myClass.startTime.split("T")[1].split("+")[0];
-            // let finish1 = myClass.finishTime.split("T")[0]myClass.finishTime.split("T")[0]+" "+myClass.finishTime.split("T")[1].split("+")[0];
             let start = new Date(myClass.startTime.toString());
             let finish = new Date(myClass.finishTime.toString());
-            // let result = new Date(start.toISOString().substring(0, 10));
-            // console.log(start.toISOString().substring(0, 10));
-
             return (
                 {
                     Id: myClass.id,
@@ -50,28 +46,14 @@ class Scheduler extends React.Component {
                 }
             )
         })
-
-
-        // this.setState({dataSource: myData})
-        this.state.myData = myData;
+        this.setState({myData: myData});
+        this.scheduleComponent.forceUpdate();
         console.log(this.data )
-        // return myData;
     }
 
     constructor() {
-
         super(...arguments);
         this.state={dataSource: []};
-        this.getClass();
-        this.data = [
-            {
-            Id: "1019f9a5-070e-476e-82d0-ce61f5ccbf0a",
-            Subject: 'Paris',
-            StartTime: new Date(2021, 0, 15, 10, 0),
-            EndTime: new Date(2021, 0, 15, 12, 30),
-        }
-        ];
-
         console.log(this.data)
     }
 
@@ -81,9 +63,10 @@ class Scheduler extends React.Component {
 
 
     render() {
+
         const data = this.data;
-        return <ScheduleComponent selectedDate={new Date(2020, 12, 15)}
-                                  eventSettings={{dataSource: this.data}} currentView='Month'>
+        return <ScheduleComponent ref={scheduleComponent => this.scheduleComponent = scheduleComponent} selectedDate={new Date(2021, 1, 15)}
+                                  eventSettings={{dataSource: this.state.myData}} currentView='Month'>
             <Inject services={[Day, Week, WorkWeek, Month, Agenda]}/>
         </ScheduleComponent>;
 

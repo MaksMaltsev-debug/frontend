@@ -11,7 +11,8 @@ export default function DeleteAccount() {
             method: 'DELETE',
             headers: {
                 "Authorization": "Bearer " + token,
-                "Access-Control-Allow-Origin": "*"},
+                "Access-Control-Allow-Origin": "*"
+            },
             url: 'http://localhost:8091/class-management/user'
         };
         const response = await axios(options);
@@ -19,17 +20,17 @@ export default function DeleteAccount() {
     }
 
     return (
-        <div className={"settings-container"}>
-            <div className={"name-settings"}>
-                <h2>Delete Account</h2>
-                <a>If you delete your account, your data will be gone forever.</a>
-                <div>
-                    <button className={"back-color delete-button"} onClick={(e) => handleDeleteAccount(e)}
-                            variant="primary">Delete Account
-                    </button>
+        <div className={"content-container"}>
+            <div className={"settings-container"}>
+                <div className={"name-settings"}>
+                    <h2>Delete Account</h2>
+                    <a>If you delete your account, your data will be gone forever.</a>
+                    <div>
+                        <button className={"back-color delete-button"} onClick={(e) => handleDeleteAccount(e)}
+                                variant="primary">Delete Account
+                        </button>
+                    </div>
                 </div>
-
-
             </div>
         </div>)
 }

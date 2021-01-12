@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {Button, Card} from "react-bootstrap";
-import defaultPhoto from "./image/web-user.jpeg";
+import defaultPhoto from "./image/class.jpg";
 
 export class ClassEntity extends Component {
     render() {
@@ -26,7 +26,6 @@ export class ClassEntity extends Component {
                                                 + " " + new Date(classEmpty.finishTime).toDateString().split(" ")[3])}
                                         </div>
                                     </a></Card.Title>
-
                             </div>
                             <Card.Body>
                                 <a>

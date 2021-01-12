@@ -1,14 +1,45 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {Col, Container, Nav, Row, Tab} from "react-bootstrap";
 import "./TabMenu.css"
-import Scheduler from "./SchedulerMyClass";
 import Students from "./StudentsTest";
 import Settings from "./Settings";
 import NavBarClass from "./NavBarClass";
 import SchedulerNavBar from "./SchedulerNavBar";
+import * as axios from "axios";
+import SubscribersClass from "./SubscribersClass";
+import ClassInfo from "./ClassInfo";
+
 
 export default function TabMenu() {
+
+    const [subscriptions, setSubscriptions] = useState([])
+    const [selectedClass, setSelectedClass] = useState()
+
+    useEffect(() => {
+        getSubscriptions();
+    }, [])
+
+    const getSubscriptions = async () => {
+        const token = localStorage.getItem("token");
+        console.log("I am here")
+        const options = {
+            method: 'GET',
+            headers: {
+                "Authorization": "Bearer " + token,
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+                "Access-Control-Allow-Headers": "X-Requested-With",
+                'Content-Type': 'application/json'
+            },
+            url: 'http://localhost:8091/class-management/subscriptions'
+        };
+        const response = await axios(options);
+        setSubscriptions(response.data);
+    };
+
+
     return (
+
         <Container>
             <Tab.Container id={"left-tabs-example"} defaultActiveKey={"scheduler"}>
                 <Row>
@@ -33,16 +64,9 @@ export default function TabMenu() {
                                 </Nav.Link>
                             </Nav.Item>
                         </Nav>
-                        <Nav variant={"pills"} className={"flex-column mt-2"}>
-                            {/*<Nav.Item>*/}
-                            {/*    {*/}
-                            {/*        mas.map((item, index) => (*/}
-                            {/*        <Nav.Link eventKey={index}>*/}
-                            {/*            {item.name}*/}
-                            {/*            <span className="icon-chevron-right"/>*/}
-                            {/*        </Nav.Link>)*/}
-                            {/*    }*/}
-                            {/*</Nav.Item>*/}
+
+                        <Nav variant={"pills"} className={"flex-column mt-2 "}>
+                            <SubscribersClass classes={subscriptions} onClassChange={setSelectedClass}/>
                         </Nav>
                     </Col>
                     <Col sm={10}>
@@ -58,6 +82,9 @@ export default function TabMenu() {
                             </Tab.Pane>
                             <Tab.Pane eventKey={"settings"} className={"margin-settings"}>
                                 <Settings/>
+                            </Tab.Pane>
+                            <Tab.Pane eventKey={"subscriber"} className={"margin-settings class-info-content"}>
+                                <ClassInfo selectedClass={selectedClass}/>
                             </Tab.Pane>
                         </Tab.Content>
                     </Col>

@@ -13,7 +13,7 @@ export default function registerUserForm() {
                     <Route exact path={"/registration"} component={Registration}/>
                     <Route exact path={"/auth"} component={Auth}/>
                     <Route exact path={"/"}><Redirect to={"/auth"}/></Route>
-                    <Route exact path={"/cabinet"} component={MainLayout}/>
+                    <Route exact path={"/cabinet*"} component={MainLayout}/>
                 </Switch>
             </Router>
         </div>)

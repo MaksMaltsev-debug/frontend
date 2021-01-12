@@ -43,7 +43,6 @@ export default function PersonalDetails() {
     const deletePhoto = async (e) => {
         e.preventDefault();
         setUserPhoto(null);
-        console.log("Del")
         const token = localStorage.getItem("token");
         const options = {
             method: 'DELETE',
@@ -57,7 +56,6 @@ export default function PersonalDetails() {
         setUserPhoto(response.data);
         return response;
     }
-
 
 
     const editUser = async (e) => {
@@ -75,7 +73,6 @@ export default function PersonalDetails() {
                 url: 'http://localhost:8090/user-management/edit-user'
             };
             const response = await axios(options);
-            console.log(response.data);
             return response;
         }
     }
@@ -103,7 +100,6 @@ export default function PersonalDetails() {
             setChangedAllName(false);
             setChangedEmail(false);
             setChangedDescription(false);
-            console.log(response.data);
             return response;
         }
     }
@@ -124,7 +120,6 @@ export default function PersonalDetails() {
         setAllName(response.data.name + " " + response.data.lastName);
         setEmail(response.data.email);
         setDescription(response.data.description);
-        console.log(response.data)
         return response;
     }
     const setPhoto = async (e) => {
@@ -132,7 +127,6 @@ export default function PersonalDetails() {
         const data = new FormData();
         data.append('file', file)
         if (changedFile) {
-            console.log("in Setter");
             const token = localStorage.getItem("token");
             const options = {
                 method: 'POST',
@@ -140,14 +134,13 @@ export default function PersonalDetails() {
                     "Authorization": "Bearer " + token,
                     "Access-Control-Allow-Origin": "*",
                     "Content-Type": "multipart/form-data",
-                    "Accept":"*/*"
+                    "Accept": "*/*"
                 },
                 data: data,
                 url: 'http://localhost:8091/class-management/image'
             };
             const response = await axios(options);
             setChangedFile(false)
-            console.log("It is end of setter"+response.data)
             return response;
         }
     }
@@ -158,66 +151,69 @@ export default function PersonalDetails() {
     }
 
     return (
-        <div className={"settings-container"}>
-            <h2>Personal details</h2>
-            <a>This section contains your basic profile information.</a>
-            <div className={"photo-settings"}>
-                <img className={"avatar"}
-                     src={userPhoto == null ? defaultPhoto : `data:image/jpeg;base64,${userPhoto}`}/>
-                <form>
-                    <div className={"buttons-container"}>
-                        <div className={"buttons"}>
-                            <label htmlFor="filePicker">
-                                Upload new photo
-                            </label>
-                            <input id="filePicker" style={{visibility: "hidden"}} ref={inputEl} type={"file"} onChange={(e)=>onUpload(e)}/>
-                            <button  onClick={(e)=>deletePhoto(e)} type={"submit"}>
-                                Delete Photo
-                            </button>
+        <div className={"content-container"}>
+            <div className={"settings-container"}>
+                <h2>Personal details</h2>
+                <a>This section contains your basic profile information.</a>
+                <div className={"photo-settings"}>
+                    <img className={"avatar"}
+                         src={userPhoto == null ? defaultPhoto : `data:image/jpeg;base64,${userPhoto}`}/>
+                    <form>
+                        <div className={"buttons-container"}>
+                            <div className={"buttons"}>
+                                <label htmlFor="filePicker">
+                                    Upload new photo
+                                </label>
+                                <input id="filePicker" style={{visibility: "hidden"}} ref={inputEl} type={"file"}
+                                       onChange={(e) => onUpload(e)}/>
+                                <button onClick={(e) => deletePhoto(e)} type={"submit"}>
+                                    Delete Photo
+                                </button>
+                            </div>
+                            <a>
+                                You can upload .jpeg, .png, .gif image format files.<br/>
+                                Max image size 3mb.
+                            </a>
                         </div>
-                        <a>
-                            You can upload .jpeg, .png, .gif image format files.<br/>
-                            Max image size 3mb.
-                        </a>
-                    </div>
-                </form>
-            </div>
-            <div className={"name-settings"}>
-                <form>
-                    <Col sm={12}>
-                        <Col sm={6}>
-                            <label>YOUR NAME</label>
-                            <input type="text" name='name'
-                                   placeholder={userProfiles.name + " " + userProfiles.lastName}
-                                   onChange={(e) => {
-                                       setAllName(e.target.value);
-                                       setChangedAllName(true)
-                                   }}/>
+                    </form>
+                </div>
+                <div className={"name-settings"}>
+                    <form>
+                        <Col sm={12}>
+                            <Col sm={6}>
+                                <label>YOUR NAME</label>
+                                <input type="text" name='name'
+                                       placeholder={userProfiles.name + " " + userProfiles.lastName}
+                                       onChange={(e) => {
+                                           setAllName(e.target.value);
+                                           setChangedAllName(true)
+                                       }}/>
+                            </Col>
+                            <Col sm={6} className={"column-padding"}>
+                                <label>EMAIL ADDRESS</label>
+                                <input type="text" name='email'
+                                       placeholder={userProfiles.email} onChange={(e) => {
+                                    setEmail(e.target.value);
+                                    setChangedEmail(true)
+                                }}/>
+                            </Col>
                         </Col>
-                        <Col sm={6} className={"column-padding"}>
-                            <label>EMAIL ADDRESS</label>
-                            <input type="text" name='email'
-                                   placeholder={userProfiles.email} onChange={(e) => {
-                                setEmail(e.target.value);
-                                setChangedEmail(true)
-                            }}/>
+                        <Col sm={12} className={"column-flex-direction"}>
+                            <label>description</label>
+                            <textarea name='description'
+                                      placeholder={description}
+                                      onChange={e => setDescription(e.target.value)}/>
+                            <button type={"submit"} className={"button-save back-color"} onClick={(e) => {
+                                setPhoto(e);
+                                editUser(e);
+                                editDescription(e);
+                            }}>
+                                Save Changes
+                            </button>
                         </Col>
-                    </Col>
-                    <Col sm={12} className={"column-flex-direction"}>
-                        <label>description</label>
-                        <textarea name='description'
-                                  placeholder={description}
-                                  onChange={e => setDescription(e.target.value)}/>
-                        <button type={"submit"} className={"button-save back-color"} onClick={(e) => {
-                            setPhoto(e);
-                            editUser(e);
-                            editDescription(e);
-                        }}>
-                            Save Changes
-                        </button>
-                    </Col>
 
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
 

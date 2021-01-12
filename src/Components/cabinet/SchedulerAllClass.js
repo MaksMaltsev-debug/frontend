@@ -16,19 +16,13 @@ import "./Scheduler.css"
 import {DataManager, ODataV4Adaptor} from '@syncfusion/ej2-data';
 import * as axios from "axios";
 
-class CustomAdaptor extends ODataV4Adaptor {
+
+class SchedulerAllClass extends React.Component {
+
     state = {
         myData: []
     }
-
-    processResponse() {
-        this.getClass();
-        let i = 0;
-        let original = this.state.myData;
-        original.forEach((item) => item['EventID'] = ++i);
-        return original;
-    }
-
+    scheduleComponent;
     getClass = async () => {
         const token = localStorage.getItem("token");
         const options = {
@@ -54,26 +48,27 @@ class CustomAdaptor extends ODataV4Adaptor {
                 }
             )
         })
-        this.state.myData = myData;
-        console.log(this.state.myData)
+        this.setState({myData: myData});
+        this.scheduleComponent.forceUpdate();
+        console.log(this.data)
     }
-}
-
-class SchedulerMyClass extends React.Component {
 
     constructor() {
         super(...arguments);
-        this.dataManager = new DataManager({
-            url: 'https://ej2services.syncfusion.com/production/web-services/api/Schedule',
-            adaptor: new CustomAdaptor
-        });
+        this.state = {dataSource: []};
+        console.log(this.data)
+    }
+
+    componentDidMount() {
+        this.getClass();
     }
 
     render() {
         return (
-            <ScheduleComponent selectedDate={new Date(2020, 12, 15)}
-                               readonly={true} eventSettings={{dataSource: this.dataManager}} currentView='Month'
-                               firstDayOfWeek={1} className={"margin-left"}>
+            <ScheduleComponent ref={scheduleComponent => this.scheduleComponent = scheduleComponent}
+                               selectedDate={new Date(2021, 0, 15)}
+                               eventSettings={{dataSource: this.state.myData}} currentView='Month'
+                               firstDayOfWeek={1}>
                 <ViewsDirective>
                     <ViewDirective option='Month'/>
                 </ViewsDirective>
@@ -82,4 +77,4 @@ class SchedulerMyClass extends React.Component {
         )
     }
 };
-export default SchedulerMyClass;
+export default SchedulerAllClass;
