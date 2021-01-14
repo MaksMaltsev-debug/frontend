@@ -8,14 +8,17 @@
     width: 90%;
     display: flex;
 }
-
+.navbar .registration-container{
+    margin-top: 0!important;
+    font-family: Tahoma;
+}
 .navbar .container .links {
     margin-left: auto;
     margin-right: 0;
 }
 
 .navbar .container .links a {
-    color: white!important;
+    color: rgb(14 78 152);
     margin: 10px;
     font-size: 28px;
     text-decoration: none;

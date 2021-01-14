@@ -24,7 +24,7 @@
 }
 
 .class-container .class-card{
-    width: 32.9%;
+    width: 32.9%!important;
     height: 352px;
     text-align: left;
     background: white;
@@ -117,7 +117,7 @@
 }
 @media (max-width: 1470px) {
     .class-container .class-card{
-        width: 32.8%;
+        width: 32.8%!important;
 
     }
     .class-container .card {
@@ -141,7 +141,7 @@
 }
 @media (max-width: 1200px) {
     .class-container .class-card{
-        width: 32.7%;
+        width: 32.7%!important;
     }
     .class-container .class-card .card-img-top {
         height: 60px;
@@ -175,7 +175,7 @@
         font-size: 12px;
     }
     .class-container .class-card{
-        width: 32.4%;
+        width: 32.4%!important;
     }
     .class-container .card p{
         font-size: 12px;

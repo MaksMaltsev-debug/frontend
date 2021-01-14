@@ -65,21 +65,21 @@ export default function Notifications() {
         <div className={"content-container"}>
             <div className={"settings-container"}>
                 <div className={"name-settings"}>
-                    <h2>Notifications</h2>
-                    <a>We highly recommend you create a strong one.</a>
+                    <h2>Newsletter and notifications</h2>
+                    <a>Control the newsletter subscription and email notifications.</a>
                     <form>
                         <label className={"margin-top"}>
                             <Switch onChange={(e) => handleChangeClassStart(e)} checked={notificationClassStart}/>
-                            <span>Switch with default style</span>
+                            <span>I want to receive notification during class start</span>
                         </label>
                         <label className={"margin-top"}>
                             <Switch onChange={(e) => handleChangeActivityInClasses(e)} checked={activityInClasses}/>
-                            <span>Switch with default style</span>
+                            <span>Email me about activity in subscribed classes</span>
                         </label>
                         <label className={"margin-top"}>
                             <Switch onChange={(e) => handleChangeInformationAboutUpdates(e)}
                                     checked={informationAboutUpdates}/>
-                            <span>Switch with default style</span>
+                            <span>I want to receive information about new features and updates</span>
                         </label>
                         <span>
           </span>

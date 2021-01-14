@@ -4,7 +4,7 @@ import {Dropdown, FormControl, Navbar} from "react-bootstrap";
 import {Form} from "shards-react";
 import './Cabinet.css';
 import '../registration/RegisterService.js'
-import {useHistory} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import * as axios from "axios";
 import defaultPhoto from "./image/web-user.jpeg";
 
@@ -43,9 +43,8 @@ export default function Header() {
         return response;
     }
 
-    const getUser = async (e) => {
+    const getUser = async () => {
         const token = localStorage.getItem("token");
-        // e.preventDefault();
         const options = {
             method: 'GET',
             headers: {
@@ -57,6 +56,7 @@ export default function Header() {
             url: 'http://localhost:8090/user-management/profile'
         };
         const response = await axios(options);
+        localStorage.setItem("userId", response.data.id);
         setUserProfiles(response.data)
         return response;
     }
@@ -95,24 +95,29 @@ export default function Header() {
             </Dropdown>
             <Dropdown>
                 <Dropdown.Toggle variant="success" id="dropdown-basic">
-                    <img className={"avatar"} src={userPhoto == null ? defaultPhoto : `data:image/jpeg;base64,${userPhoto}`}/>
+                    <img className={"avatar"}
+                         src={userPhoto == null ? defaultPhoto : `data:image/jpeg;base64,${userPhoto}`}/>
                     <span className="icon-chevron-down"/>
                 </Dropdown.Toggle>
                 <div className={"container-user"}>
                     <Dropdown.Menu>
                         <div className={"submenu"}>{userProfiles.name} {userProfiles.lastName}<br/>{userProfiles.login}
                         </div>
-                        <Dropdown.Item href="#/action-1">
-                            <div className={"submenu-item"}>
-                                <span className="icon-person submenu-icon"/>
-                                My Profile
-                            </div>
+                        <Dropdown.Item>
+                            <Link to={"/cabinet/student-info/" + localStorage.userId}>
+                                <div className={"submenu-item"}>
+                                    <span className="icon-person submenu-icon"/>
+                                    My Profile
+                                </div>
+                            </Link>
                         </Dropdown.Item>
-                        <Dropdown.Item href="/settings">
-                            <div className={"submenu-item"}>
-                                <span className="icon-cog submenu-icon"/>
-                                Settings
-                            </div>
+                        <Dropdown.Item>
+                            <Link to={"/cabinet/settings"}>
+                                <div className={"submenu-item"}>
+                                    <span className="icon-cog submenu-icon"/>
+                                    Settings
+                                </div>
+                            </Link>
                         </Dropdown.Item>
                         <Dropdown.Item onClick={() => handleLogout()}>
                             <div className="submenu-item">

@@ -1,7 +1,5 @@
 import React from "react";
-import {
-    Inject, ScheduleComponent, Month, ViewsDirective, ViewDirective
-} from "@syncfusion/ej2-react-schedule";
+import {Inject, Month, ScheduleComponent, ViewDirective, ViewsDirective} from "@syncfusion/ej2-react-schedule";
 import "../../../node_modules/@syncfusion/ej2-base/styles/material.css";
 import "../../../node_modules/@syncfusion/ej2-buttons/styles/material.css";
 import "../../../node_modules/@syncfusion/ej2-calendars/styles/material.css";
@@ -13,8 +11,10 @@ import "../../../node_modules/@syncfusion/ej2-popups/styles/material.css";
 import "../../../node_modules/@syncfusion/ej2-splitbuttons/styles/material.css";
 import "../../../node_modules/@syncfusion/ej2-react-schedule/styles/material.css";
 import "./Scheduler.css"
-import {DataManager, ODataV4Adaptor} from '@syncfusion/ej2-data';
 import * as axios from "axios";
+import {any} from "prop-types";
+import {Button, Modal, Row} from "react-bootstrap";
+import MyVerticallyCenteredModal from "./MyVerticallyCenteredModal";
 
 class SchedulerMyClass extends React.Component {
 
@@ -62,11 +62,21 @@ class SchedulerMyClass extends React.Component {
         this.getClass();
     }
 
+    editorWindowTemplate(props){
+        return (
+            <table className="custom-event-editor">
+                <a>asdasdasdas</a>
+            </table>
+
+        )
+    }
+
     render() {
         return (
             <ScheduleComponent ref={scheduleComponent => this.scheduleComponent = scheduleComponent}
                                selectedDate={new Date(2021, 0, 15)}
                                eventSettings={{dataSource: this.state.myData}} currentView='Month'
+                               editorTemplate={this.editorWindowTemplate.bind(this)}
                                firstDayOfWeek={1}>
                 <ViewsDirective>
                     <ViewDirective option='Month'/>

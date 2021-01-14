@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {Button, Card} from "react-bootstrap";
 import defaultPhoto from "./image/class.jpg";
+import {Link} from "react-router-dom";
 
 export class ClassEntity extends Component {
     render() {
@@ -17,7 +18,7 @@ export class ClassEntity extends Component {
                                 <Card.Img variant="top"
                                           src={classEmpty.photo == null ? defaultPhoto : `data:image/jpeg;base64,${classEmpty.photo}`}/>
                                 <Card.Title>{classEmpty.name}
-                                    <a>
+                                    <a href={"/cabinet/scheduler"}>
                                         <div>{(new Date(classEmpty.startTime).toDateString().split(" ")[2]
                                             + " " + new Date(classEmpty.startTime).toDateString().split(" ")[1]
                                             + " " + new Date(classEmpty.startTime).toDateString().split(" ")[3])}-
@@ -35,7 +36,9 @@ export class ClassEntity extends Component {
                                 <Card.Text>
                                     {classEmpty.description}
                                 </Card.Text>
-                                <Button variant="primary">More Details</Button>
+                                <Link to={"/cabinet/class-info/"+classEmpty.id}>
+                                    <Button variant="primary">More Details</Button>
+                                </Link>
                             </Card.Body>
                         </Card>))}
             </div>

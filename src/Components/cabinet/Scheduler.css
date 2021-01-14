@@ -6,7 +6,7 @@ tr{
     height: 670px;
 }
 .e-schedule{
-    height: 670px!important;
+    height: 100%!important;
 }
 .e-table-container{
     height: 670px;
@@ -16,7 +16,7 @@ tr{
 }
 
 .e-control, .e-schedule, .e-lib, .e-keyboard{
-    height: 100%!important;
+
 }
 
 .e-toolbar-right{
@@ -51,8 +51,8 @@ tr{
 .modal-backdrop.show {
     width: 78.4%!important;
     margin-left: 18.65%!important;
-    margin-top: 170px!important;
-    height: 758px!important;
+    margin-top: 150px!important;
+    height: 767px!important;
 }
 
 .modal-dialog {

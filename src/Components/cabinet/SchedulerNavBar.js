@@ -1,5 +1,5 @@
-import React, {useCallback, useState} from "react";
-import {Row, Button, Modal, Tab, Tabs} from "react-bootstrap";
+import React, {useCallback, useRef, useState} from "react";
+import {Button, Modal, Row, Tab, Tabs} from "react-bootstrap";
 import SchedulerAllClass from "./SchedulerAllClass";
 import SchedulerMyClass from "./SchedulerMyClass";
 import "./Scheduler.css";
@@ -16,13 +16,21 @@ function MyVerticallyCenteredModal(props) {
     const [finishTime, setFinishTime] = useState([]);
     const [finishDate, setFinishDate] = useState([]);
     const [validation, setValidation] = useState(false);
+    const [classForPhoto, setClassForPhoto] = useState();
+    const inputEl = useRef(null);
 
     const setPhoto = async (e) => {
         e.preventDefault();
-        const data = new FormData();
-        console.log(file)
-        data.append('file', file)
+
+        console.log("in setPhoto");
+        console.log(file);
+        console.log(classForPhoto)
+        console.log(changedFile)
+
         if (changedFile) {
+            const data = new FormData();
+            data.append('file', file)
+            data.append('id', classForPhoto)
             console.log("in Setter");
             const token = localStorage.getItem("token");
             const options = {
@@ -34,11 +42,11 @@ function MyVerticallyCenteredModal(props) {
                     "Accept": "*/*"
                 },
                 data: data,
-                url: 'http://localhost:8091/class-management/image'
+                url: 'http://localhost:8091/class-management/class-image'
             };
             const response = await axios(options);
             setChangedFile(false)
-            console.log("It is end of setter" + response.data)
+            console.log(response.data)
             return response;
         }
     }
@@ -72,9 +80,17 @@ function MyVerticallyCenteredModal(props) {
             };
             const response = await axios(options);
             setValidation(false);
-            console.log(response.data);
+            console.log(response.data.id);
+            await setClassForPhoto(response.data.id)
+            setPhoto(e);
             return response;
         }
+    }
+    const onUpload = async (e) => {
+        e.preventDefault();
+        setFile(inputEl.current.files[0]);
+        setChangedFile(true);
+        console.log(file);
     }
     const onDrop = useCallback(acceptedFiles => {
         setFile(acceptedFiles);
@@ -96,14 +112,19 @@ function MyVerticallyCenteredModal(props) {
             <Modal.Body>
                 <form className={"create-class-form"}>
                     <Row className={"special-row"}>
-                        <div {...getRootProps()} className={"dropzone-container"}>
-                            <input {...getInputProps()} />
-                            {
-                                isDragActive ?
-                                    <p>Drop the files here ...</p> :
-                                    <p>Upload image</p>
-                            }
-                        </div>
+                        {/*<div {...getRootProps()} className={"dropzone-container"}>*/}
+                        {/*    <input {...getInputProps()} />*/}
+                        {/*    {*/}
+                        {/*        isDragActive ?*/}
+                        {/*            <p>Drop the files here ...</p> :*/}
+                        {/*            <p>Upload image</p>*/}
+                        {/*    }*/}
+                        {/*</div>*/}
+                        <label htmlFor="filePicker">
+                            Upload new photo
+                        </label>
+                        <input id="filePicker" style={{visibility: "hidden"}} ref={inputEl} type={"file"}
+                               onChange={(e) => onUpload(e)}/>
                     </Row>
                     <Row>
                         <span>Title</span><input placeholder={"Add Yor Class Title"}
@@ -134,7 +155,7 @@ function MyVerticallyCenteredModal(props) {
             <Modal.Footer>
                 <Button onClick={(e) => {
                     createClass(e);
-                    setPhoto(e)
+                    // setPhoto(e)
                 }} className={"form-button"}>Create Class</Button>
             </Modal.Footer>
         </Modal>

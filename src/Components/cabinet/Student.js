@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {Button, Card} from "react-bootstrap";
 import defaultPhoto from "./image/web-user.jpeg";
+import {Link} from "react-router-dom";
 
 export class Student extends Component {
     render() {
@@ -18,7 +19,10 @@ export class Student extends Component {
                             <Card.Text>
                                 {user.email}
                             </Card.Text>
-                            <Button variant="primary">More Details</Button>
+                            <Link to={"/cabinet/student-info/"+user.id}>
+                                <Button variant="primary">More Details</Button>
+                            </Link>
+
                         </Card.Body>
                     </Card>))}
             </div>
